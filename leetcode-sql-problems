@@ -1,1 +1,23 @@
-asd
+# 262. Trips and Users
+
+        # Filter out UnbannedUser
+        With UnbannedUser as (
+            SELECT * 
+            FROM Users
+            WHERE Banned = 'No'
+        ),
+        # Filter out Trips with unbanned client and driver
+            UnbannedTrip as ( 
+            SELECT *
+            FROM Trips
+            WHERE Client_Id IN (SELECT Users_Id FROM UnbannedUser WHERE Role = 'client')
+                  AND  Driver_Id IN (SELECT Users_Id FROM UnbannedUser WHERE Role = 'driver' )
+        )
+
+        # Calculate Cancelation Rate by Date
+
+        SELECT DISTINCT Request_at AS 'Day', 
+               ROUND(SUM(CASE WHEN UnbannedTrip.Status = 'completed' THEN 0 ELSE 1 END) OVER (PARTITION BY Request_at) 
+               / COUNT(*) OVER (PARTITION BY Request_at), 2) AS 'Cancellation Rate'
+        FROM UnbannedTrip   
+        WHERE Request_at between '2013-10-01' and '2013-10-03'
