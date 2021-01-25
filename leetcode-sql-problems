@@ -10,16 +10,17 @@ Calculate cancelation rate of a taxi trips by day
         ),
         # Filter out Trips with unbanned client and driver
             UnbannedTrip as ( 
-            SELECT *
+            SELECT *, SUM(CASE WHEN UnbannedTrip.Status = 'completed' THEN 0 ELSE 1 END) AS 'cancelled',
+            COUNT(*) AS 'totalOrder'
             FROM Trips
             WHERE Client_Id IN (SELECT Users_Id FROM UnbannedUser WHERE Role = 'client')
                   AND  Driver_Id IN (SELECT Users_Id FROM UnbannedUser WHERE Role = 'driver' )
+            GROUP BY Request_at 
         )
 
         # Calculate Cancelation Rate by Date
 
         SELECT DISTINCT Request_at AS 'Day', 
-               ROUND(SUM(CASE WHEN UnbannedTrip.Status = 'completed' THEN 0 ELSE 1 END) OVER (PARTITION BY Request_at) 
-               / COUNT(*) OVER (PARTITION BY Request_at), 2) AS 'Cancellation Rate'
+               ROUND(cancelled / totalOrder, 2) AS 'Cancellation Rate'
         FROM UnbannedTrip   
         WHERE Request_at between '2013-10-01' and '2013-10-03'
