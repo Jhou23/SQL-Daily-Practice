@@ -1,4 +1,6 @@
-# 262. Trips and Users
+262-Hard. Trips and Users
+Calculate cancelation rate of a taxi trips by day
+
 
         # Filter out UnbannedUser
         With UnbannedUser as (
