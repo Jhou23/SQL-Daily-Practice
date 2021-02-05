@@ -39,6 +39,6 @@ The Employee table holds all employees. The employee table has three columns: Em
         HAVING SUM(CASE
             WHEN Employee.Salary = alias.Salary THEN 1
             ELSE 0
-        END) >= ABS(SUM(SIGN(Employee.Salary - alias.Salary)))
+        END) >= ABS(SUM(SIGN(Employee.Salary - alias.Salary)))  #SIGN(a-b) a-b > 0 return 1, a-b = 0 return 0, a-b < 0 return -1.
         ORDER BY Employee.Id
         ;
