@@ -24,3 +24,21 @@ Calculate cancelation rate of a taxi trips by day
                ROUND(cancelled / totalOrder, 2) AS 'Cancellation Rate'
         FROM UnbannedTrip   
         WHERE Request_at between '2013-10-01' and '2013-10-03'
+
+
+569. Median Employee Salary
+The Employee table holds all employees. The employee table has three columns: Employee Id, Company Name, and Salary.
+        SELECT
+            Employee.Id, Employee.Company, Employee.Salary
+        FROM
+            Employee,
+            Employee alias
+        WHERE
+            Employee.Company = alias.Company
+        GROUP BY Employee.Company , Employee.Salary
+        HAVING SUM(CASE
+            WHEN Employee.Salary = alias.Salary THEN 1
+            ELSE 0
+        END) >= ABS(SUM(SIGN(Employee.Salary - alias.Salary)))
+        ORDER BY Employee.Id
+        ;
