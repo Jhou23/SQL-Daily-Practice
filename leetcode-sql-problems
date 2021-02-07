@@ -57,3 +57,15 @@ The Employee table holds all employees. The employee table has three columns: Em
         SELECT Id, Company, Salary
         FROM orderedSalary
         WHERE SalarySeq IN (ceil(empNum/2), empNum/2 + 1);
+        
+        
+        
+627. Swap Salary
+        UPDATE salary
+        SET
+            sex = CASE sex
+                WHEN 'm' THEN 'f'
+                ELSE 'm'
+            END;
+
+        update salary set sex = IF (sex = "m", "f", "m");
