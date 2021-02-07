@@ -28,6 +28,9 @@ Calculate cancelation rate of a taxi trips by day
 
 569. Median Employee Salary
 The Employee table holds all employees. The employee table has three columns: Employee Id, Company Name, and Salary.
+        
+        #Solution 1: group by + algorithm
+        
         SELECT
             Employee.Id, Employee.Company, Employee.Salary
         FROM
@@ -42,3 +45,15 @@ The Employee table holds all employees. The employee table has three columns: Em
         END) >= ABS(SUM(SIGN(Employee.Salary - alias.Salary)))  #SIGN(a-b) a-b > 0 return 1, a-b = 0 return 0, a-b < 0 return -1.
         ORDER BY Employee.Id
         ;
+        
+        
+         #Solution 2: temp table + partition by  
+         WITH orderedSalary AS (
+                SELECT Id, Company, Salary, 
+                       row_number() OVER (PARTITION BY Company ORDER BY Salary) AS SalarySeq, 
+                       COUNT(*) OVER (Partition by Company) AS empNum
+                FROM   Employee)
+
+        SELECT Id, Company, Salary
+        FROM orderedSalary
+        WHERE SalarySeq IN (ceil(empNum/2), empNum/2 + 1);
