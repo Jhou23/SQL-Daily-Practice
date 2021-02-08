@@ -68,4 +68,9 @@ The Employee table holds all employees. The employee table has three columns: Em
                 ELSE 'm'
             END;
 
-        update salary set sex = IF (sex = "m", "f", "m");
+        UPDATE salary 
+           SET sex = CASE sex 
+           WHEN 'f' THEN 'm' 
+           WHEN 'm' THEN 'f' 
+           ELSE 'Default' END 
+        WHERE sex IN ('f', 'm')
