@@ -60,17 +60,24 @@ The Employee table holds all employees. The employee table has three columns: Em
         
         
         
-627. Swap Salary
-        UPDATE salary
-        SET
-            sex = CASE sex
-                WHEN 'm' THEN 'f'
-                ELSE 'm'
-            END;
-
+627. Swap sex
         UPDATE salary 
            SET sex = CASE sex 
            WHEN 'f' THEN 'm' 
            WHEN 'm' THEN 'f' 
            ELSE 'Default' END 
         WHERE sex IN ('f', 'm')
+
+1270. All People Report to the CEO(within 3 degree of relations)
+        SELF JOIN to find report relationships
+
+        WITH relation AS (
+        Select employee_id as eId, manager_id as mId
+            FROM Employees)
+
+        SELECT r1.eId as employee_id
+        FROM relation r1 
+             JOIN relation r2 ON r1.mId = r2.eId
+             JOIN relation r3 ON r2.mId = r3.eId
+             JOIN relation r4 ON r3.mId = r4.eId
+        WHERE r1.eId <> 1 AND r4.eId = 1
