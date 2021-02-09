@@ -81,3 +81,13 @@ The Employee table holds all employees. The employee table has three columns: Em
              JOIN relation r3 ON r2.mId = r3.eId
              JOIN relation r4 ON r3.mId = r4.eId
         WHERE r1.eId <> 1 AND r4.eId = 1
+        
+        
+626. Exchange Seats OF Students
+
+        SELECT (CASE WHEN MOD(id, 2) = 0 THEN id - 1 
+                     WHEN MOD(id, 2) = 1 AND id != totalSeat THEN id + 1
+                     ELSE id
+                     END) AS id, student
+        FROM  seat, (SELECT COUNT(id) totalSeat FROM seat) AS total
+        ORDER BY id ASC
