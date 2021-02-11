@@ -163,3 +163,11 @@ The Employee table holds all employees. The employee table has three columns: Em
     FROM Department
     GROUP BY id
     ORDER BY id
+    
+    
+    196. Delete Duplicate Emails
+        task: delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.
+        data: columns:  Id | Email 
+    
+        DELETE FROM Person WHERE Id NOT IN 
+        (SELECT * FROM(SELECT MIN(Id) FROM Person GROUP BY Email) as p);
