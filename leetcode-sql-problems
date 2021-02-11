@@ -1,3 +1,41 @@
+601-Hard. Human Traffic of Stadium - 
+        Task: SELECT the Stadium ativities last more than 3 days that has more than 100 people visits
+        Data desription: column name: id(consecutive activity ids), visit_date, people(number of people visits) 
+
+        Method1:
+        # when the stadium has more than 100 people visits, check if that day is in a 3 consecutive days that has more than 100 visits.
+
+        SELECT id, visit_date, people FROM stadium a 
+        WHERE people >= 100
+                 AND (SELECT people FROM stadium b WHERE b.id = a.id + 1) >= 100
+                 AND (SELECT people FROM stadium c WHERE c.id = a.id + 2) >= 100 
+            OR people >= 100
+                 AND (SELECT people FROM stadium e WHERE e.id = a.id - 1) >= 100
+                 AND (SELECT people FROM stadium f WHERE f.id = a.id + 1) >= 100
+            OR people >= 100
+                 AND (SELECT people FROM stadium g WHERE g.id = a.id - 1) >= 100
+                 AND (SELECT people FROM stadium h WHERE h.id = a.id - 2) >= 100
+        order by id;
+
+        Method2:
+        # 1 filter out stadium event with less than 100 people
+        # 2 create a new column called consecutive_signal, which deduct row number from each activity id
+        # 3 if the activity is consecutive, their consecutive_signal will have the same number
+        WITH ranking AS (
+        SELECT *, id - ROW_NUMBER() OVER (ORDER BY id ASC) AS consecutive_signal
+        FROM Stadium 
+        WHERE people >= 100)
+
+        # group by the consecutive_signal, and see if there are more than 3 consecutive days 
+        # that the stadium has more than 100 people.
+        SELECT id, visit_date, people
+        FROM ranking 
+        WHERE consecutive_signal IN 
+        (SELECT consecutive_signal 
+        FROM ranking 
+        GROUP BY consecutive_signal
+        HAVING COUNT(*) >= 3)
+
 262-Hard. Trips and Users
 Calculate cancelation rate of a taxi trips by day
 
