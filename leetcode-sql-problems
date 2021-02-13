@@ -171,3 +171,21 @@ The Employee table holds all employees. The employee table has three columns: Em
     
         DELETE FROM Person WHERE Id NOT IN 
         (SELECT * FROM(SELECT MIN(Id) FROM Person GROUP BY Email) as p);
+
+1517. Find Users With Valid E-Mails
+        task: Write an SQL query to find the users who have valid emails. valid e-mail has a prefix name and a domain where: 
+              1.The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.' and/or dash '-'. 
+              2.The prefix name must start with a letter.
+              3.The domain is '@leetcode.com'.
+        table: user_id(int), name(varchar),mail(varchar)
+        
+        solution:
+                # To select the valid email, I need to apply REGEXP
+                #   1. domain is @leetcode.com, so use $ denote the end of string: '@leetcode.com$'
+                #   2. prefix begin with a letter (lower or upper), then ^ denote the head of string: '^[a-zA-Z]'
+                #   3. what beween domain and prefix are 0 or more letters (lower or upper),
+                #    digit, underscore, period, dash: [a-zA-Z0-9_.-]*
+
+                SELECT * 
+                FROM Users
+                WHERE mail REGEXP '^[a-zA-Z][[:alnum:]_.-]*@leetcode\.com$'
