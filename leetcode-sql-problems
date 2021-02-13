@@ -37,7 +37,10 @@
         HAVING COUNT(*) >= 3)
 
 262-Hard. Trips and Users
-Calculate cancelation rate of a taxi trips by day
+        task: Write a SQL query to find the cancellation rate of requests with unbanned users (both client and driver must not be banned) each day between "2013-10-01" and "2013-10-03".
+              The cancellation rate is computed by dividing the number of canceled (by client or driver) requests with unbanned users by the total number of requests with unbanned users on that day.
+              Return the result table in any order. Round Cancellation Rate to two decimal points.
+        table: Trips(Id, Client_Id, Driver_Id, City_Id, Status, Request_at) Users( Users_Id, Banned, Role)
 
         # Filter out UnbannedUser
         With UnbannedUser as (
