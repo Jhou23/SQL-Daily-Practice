@@ -192,3 +192,11 @@ The Employee table holds all employees. The employee table has three columns: Em
                 SELECT * 
                 FROM Users
                 WHERE mail REGEXP '^[a-zA-Z][[:alnum:]_.-]*@leetcode\.com$'
+                
+512. Game Play Analysis II
+        task: Write a SQL query that reports the device that is first logged in for each player.
+        data: player_id(int), device_id(int), event_date(date), games_played(int)
+        solution:
+        SELECT DISTINCT player_id, 
+                FIRST_VALUE(device_id) OVER (PARTITION BY player_id ORDER BY event_date ASC) AS device_id
+        FROM Activity
