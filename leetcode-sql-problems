@@ -193,10 +193,19 @@ The Employee table holds all employees. The employee table has three columns: Em
                 FROM Users
                 WHERE mail REGEXP '^[a-zA-Z][[:alnum:]_.-]*@leetcode\.com$'
                 
-512. Game Play Analysis II
-        task: Write a SQL query that reports the device that is first logged in for each player.
+512. Game Play Analysis（3 problems）
+        task 1: Write a SQL query that reports the device that is first logged in for each player.
         data: player_id(int), device_id(int), event_date(date), games_played(int)
         solution:
-        SELECT DISTINCT player_id, 
-                FIRST_VALUE(device_id) OVER (PARTITION BY player_id ORDER BY event_date ASC) AS device_id
-        FROM Activity
+                SELECT DISTINCT player_id, 
+                        FIRST_VALUE(device_id) OVER (PARTITION BY player_id ORDER BY event_date ASC) AS device_id
+                FROM Activity
+
+        task 2: Write an SQL query that reports for each player and date, how many games played so far by the player. That is, the total number of games played by the player until that date. Check the example for clarity.
+        solution: 
+                # obtain the total game played by a time using sum() + Partition By
+                select player_id, event_date, sum(games_played) over(partition by player_id order by event_date) as games_played_so_far
+                from Activity
+                order by player_id
+
+
