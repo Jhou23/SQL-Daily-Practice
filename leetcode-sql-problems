@@ -207,5 +207,16 @@ The Employee table holds all employees. The employee table has three columns: Em
                 select player_id, event_date, sum(games_played) over(partition by player_id order by event_date) as games_played_so_far
                 from Activity
                 order by player_id
+                
+        task 3: Write an SQL query that reports the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places.
+        
+                WITH first_time_login AS
+                (
+                    SELECT player_id, MIN(event_date) AS first_date
+                    FROM Activity
+                    GROUP BY player_id
+                )
 
+                SELECT ROUND(COUNT(t2.player_id) / COUNT(t1.player_id),2) AS returned_player_fraction
+                FROM firstDate  t1 LEFT JOIN Activity t2  ON t1.player_id = t2.player_id AND t1.first_date = t2.event_date - 1
 
