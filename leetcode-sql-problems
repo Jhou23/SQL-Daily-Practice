@@ -1,3 +1,18 @@
+571-hard. Find Median Given Frequency of Numbers
+        table: number, frequency
+        code:
+                WITH median_calculation AS 
+                (
+                SELECT a.*, ABS(SUM(SIGN(a.Number - b.Number)*b.Frequency)) as median_signal 
+                FROM Numbers a, Numbers b 
+                GROUP BY a.Number
+                )
+
+                SELECT AVG(Number) as median
+                FROM median_calculation m
+                WHERE m.Frequency >= m.median_signal
+        
+
 601-Hard. Human Traffic of Stadium - 
         Task: SELECT the Stadium ativities last more than 3 days that has more than 100 people visits
         Data desription: column name: id(consecutive activity ids), visit_date, people(number of people visits) 
@@ -219,4 +234,13 @@ The Employee table holds all employees. The employee table has three columns: Em
 
                 SELECT ROUND(COUNT(t2.player_id) / COUNT(t1.player_id),2) AS returned_player_fraction
                 FROM firstDate  t1 LEFT JOIN Activity t2  ON t1.player_id = t2.player_id AND t1.first_date = t2.event_date - 1
+                
+570. Managers with at Least 5 Direct Reports
+        task:  write a SQL query that finds out managers with at least 5 direct report. For the above table, your SQL query should return
+        code:  SELECT Name
+               FROM Employee a
+               WHERE Id IN (SELECT ManagerId FROM Employee b GROUP BY ManagerId HAVING COUNT(*) >= 5 )
+               
 
+        
+        
