@@ -241,6 +241,12 @@ The Employee table holds all employees. The employee table has three columns: Em
                FROM Employee a
                WHERE Id IN (SELECT ManagerId FROM Employee b GROUP BY ManagerId HAVING COUNT(*) >= 5 )
                
+574. Winning Candidate
+        task:  to find the name of the winning candidate
+        code:
+                SELECT Name
+                FROM Candidate
+                WHERE id = (SELECT CandidateId FROM Vote GROUP BY CandidateId ORDER BY COUNT(*) DESC LIMIT 1)        
+                
+                
 
-        
-        
