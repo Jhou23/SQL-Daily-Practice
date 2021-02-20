@@ -1,3 +1,22 @@
+579. Find Cumulative Salary of an Employee
+        task：Write a SQL to get the cumulative sum of an employee's salary over a period of 3 months but exclude the most recent month.
+        table: id, month, salary
+        code:
+                WITH current_month_deleted_for_each_employee AS 
+                (
+                    SELECT Employee.Id, Employee.Month, Employee.Salary
+                    FROM Employee JOIN (SELECT Id, MAX(month) as current_month_by_id FROM employee GROUP BY Id) as current_month
+                                  ON Employee.Id = current_month.id
+                    WHERE Month < current_month_by_id
+                )
+     
+                SELECT Id, Month, SUM(Salary) OVER (PARTITION BY Id ORDER BY Month RANGE BETWEEN 2 PRECEDING AND CURRENT ROW) AS Salary
+                FROM current_month_deleted_for_each_employee
+                ORDER BY Id, Month DESC
+
+
+
+
 571-hard. Find Median Given Frequency of Numbers
         table: number, frequency
         code:
