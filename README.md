@@ -1,6 +1,6 @@
 # SQL Problems Collection
 
-This repository includes the sql problems with my solutions and summary. Hope this collection is my daily log of SQL practicing and I hope it can be of some help for you.
+This repository is the log of my daily sql practice. I hope it can be of some help for you.
 
 
 ## Introduction
