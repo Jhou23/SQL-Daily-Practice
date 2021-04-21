@@ -11,7 +11,7 @@
 To calculate running sum, sometimes JOIN method is much better than the WINDOW function:
 Count + JOIN with a comparison condition + Group by
 
-keys:
+keys:<br/>
 1 some months have no orders, so I create a full month column(from 1 to 12) with Recursive CTE for the final report
 
 *2(challenging) count the num of active drivers by the end of each month. Join drivers registered before that month, then count:
