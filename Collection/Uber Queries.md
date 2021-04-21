@@ -34,7 +34,6 @@ SELECT ad.month,
        IFNULL(accepted_rides, 0) AS accepted_rides
 FROM active_drivers ad LEFT JOIN monthly_rides USING(month)
 ```
-![image](https://user-images.githubusercontent.com/60673352/115582828-52551080-a297-11eb-8e61-5f2684435f4a.png)
 
 ## Summary
 To calculate running sum, sometimes JOIN method is much better than the WINDOW function:
