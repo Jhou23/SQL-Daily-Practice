@@ -76,7 +76,9 @@ User Jonathan with id = 7 logged in 7 times in 6 different days, five of them we
 
 ## Summary
 ```
-Methods: divide consecutive login dates of each user into different groups and see which group has more than 5 consecutive login dates. Then we know which user is an active user.
+Methods: 
+divide consecutive login dates of each user into different groups and see which group has more than 5 consecutive login dates. 
+Then we know which user is an active user.
 
 Steps:
 A. attach consecutive row numbers to each users records
