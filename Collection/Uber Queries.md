@@ -48,3 +48,8 @@ FROM month_col m JOIN Drivers d
 ON 202000 + m.month >= DATE_FORMAT(d.join_date, "%Y%m")
 GROUP BY month
 ```
+
+## Feedback:
+If you have any suggestions, I would like to hear from you:<br/>
+**Email**: jinxin.hou1994@gmail.com<br/>
+**LinkedIn**: http://www.linkedin.com/in/jinxin-hou-a2708898
