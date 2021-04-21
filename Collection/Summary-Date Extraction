@@ -1,0 +1,13 @@
+1. LEFT() / RIGHT() / MID() can get part of the string/date.
+For example, we want to check if the date is in 2021-05
+LEFT(date, 7) = '2021-05)
+
+2. date REGEXP '^2021-05'
+
+3. DATE_FORMAT(date, "%Y-%m") = '2021-05'
+
+4. EXTRACT( YEAR_MONTH FROM date) = '2021-05'
+
+5. date BETWEEN '2021-05-01' AND '2021-05-31'
+
+6. DATEDIFF('2021-05-31', date) BETWEEN 0 and 30
