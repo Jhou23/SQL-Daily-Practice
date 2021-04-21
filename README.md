@@ -109,7 +109,8 @@ If you have any suggestions to the collections such as the format of sharing and
   By the end of February --> three active drivers (10, 8, 5) and no accepted rides.
   ```
 
-    ### Solution
+  ### Solution
+    
   ```
       # REPORT 1) the num of active drivers by the end of each 2020 month
       #        2) the num of accepted rides in each 2020 month
