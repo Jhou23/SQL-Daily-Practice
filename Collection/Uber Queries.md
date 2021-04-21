@@ -1,8 +1,11 @@
 # Uber Prob 1: count active drivers & accepted rides by month
 
 ## Problem Description:
+
 Report the following statistics for each month of 2020:
+
 The number of drivers currently with the Hopper company by the end of the month (active_drivers).
+
 The number of accepted rides in that month (accepted_rides).
 
 ## Tables
