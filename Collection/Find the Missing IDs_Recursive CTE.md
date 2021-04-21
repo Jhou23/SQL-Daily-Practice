@@ -36,4 +36,4 @@ Recursive CTE article: https://lnkd.in/gN27742
 ## Feedback:
 If you have any suggestions, I would like to hear from you:<br/>
 **Email**: jinxin.hou1994@gmail.com<br/>
-**LinkedIn**: linkedin.com/in/jinxin-hou-a2708898
+**LinkedIn**: http://www.linkedin.com/in/jinxin-hou-a2708898
