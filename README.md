@@ -1,2 +1,3 @@
 # SQL-problems
-This repository includes my solutions for sql problems
+
+## This repository includes the sql problems I solved
