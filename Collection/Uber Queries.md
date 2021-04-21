@@ -16,9 +16,11 @@ keys:
 
 *2(challenging) count the num of active drivers by the end of each month. Join drivers registered before that month, then count:
 
-···
+```
+{
 SELECT month, COUNT(d.driver_id) AS active_driver
 FROM month_col m JOIN Drivers d
 ON 202000 + m.month >= DATE_FORMAT(d.join_date, "%Y%m")
 GROUP BY month
-···
+}
+```
