@@ -12,15 +12,11 @@ To calculate running sum, sometimes JOIN method is much better than the WINDOW f
 Count + JOIN with a comparison condition + Group by
 
 keys:<br/>
-1 some months have no orders, so I create a full month column(from 1 to 12) with Recursive CTE for the final report
-
+1 some months have no orders, so I create a full month column(from 1 to 12) with Recursive CTE for the final report<br/>
 *2(challenging) count the num of active drivers by the end of each month. Join drivers registered before that month, then count:
-
 ```
-{
 SELECT month, COUNT(d.driver_id) AS active_driver
 FROM month_col m JOIN Drivers d
 ON 202000 + m.month >= DATE_FORMAT(d.join_date, "%Y%m")
 GROUP BY month
-}
 ```
