@@ -113,7 +113,7 @@ FROM active_drivers ad LEFT JOIN monthly_rides USING(month)
 ```
 
 ## Summary
-To calculate running sum, sometimes JOIN method is much better than the WINDOW function:
+To calculate running sum, sometimes JOIN method is much better than the WINDOW function:<br/>
 Count + JOIN with a comparison condition + Group by
 
 **keys**:<br/>
