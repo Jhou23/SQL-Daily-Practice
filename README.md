@@ -20,7 +20,7 @@ Happy Reading!
 
 If you have any suggestions to the collections such as the format of sharing and better solution, I am happy to speak with you.
 
-**Email**   : jinxin.hou1994@gmail.com
+**Email**   : jinxin.hou1994@gmail.com<br/>
 **LinkedIn**: http://www.linkedin.com/in/jinxin-hou-a2708898
 
 
