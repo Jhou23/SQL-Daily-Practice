@@ -178,7 +178,8 @@ FROM driver_by_mon d LEFT JOIN active_drivers ad USING(m)
                    divide total drivers by active drivers
                    
 2. Trick:  Count total drivers by month
-           
+           use GROUP BY  + LEFT JOIN with comparison between date  
+
            SELECT month, COUNT(driver_id) as total_drivers
            FROM mon LEFT JOIN Drivers d 
            # count drivers number joined before each month of 2020
