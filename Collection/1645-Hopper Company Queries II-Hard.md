@@ -168,13 +168,13 @@ FROM driver_by_mon d LEFT JOIN active_drivers ad USING(m)
 
 ## Summary
 1. Approach: 
-  Top down method: working percentage of drivers by month = active driver/ total drivers
-                   get the active drivers by month 
-                      -> JOIN "rides" table with "acceptedRides" table 
-                      -> filter orders not in 2020 -> group by month
-                   get the total drivers by month  
-                      -> create a full month column for 2020 
-                      -> COUNT all the drivers join before the month to join
+  Top down method: working percentage of drivers by month = active driver/ total drivers<br/>
+                   get the active drivers by month <br/>
+                      -> JOIN "rides" table with "acceptedRides" table <br/>
+                      -> filter orders not in 2020 -> group by month<br/>
+                   get the total drivers by month  <br/>
+                      -> create a full month column for 2020 <br/>
+                      -> COUNT all the drivers join before the month to join<br/>
                    divide total drivers by active drivers
                    
 2. Trick:  Count total drivers by month
