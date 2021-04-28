@@ -162,7 +162,8 @@ active_drivers AS (
 
 # Calculate the % of active drivers by 2020 month
 SELECT d.m AS month, 
-       ROUND(IFNULL(active_drivers, 0)/total_drivers*100, 2) AS working_percentage
+       IF(total_drivers = 0, 0, ROUND(IFNULL(active_drivers, 0)/total_drivers*100, 2))
+       AS working_percentage
 FROM driver_by_mon d LEFT JOIN active_drivers ad USING(m)
 ```
 
