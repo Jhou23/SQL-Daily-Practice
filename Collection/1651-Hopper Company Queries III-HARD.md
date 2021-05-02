@@ -1,13 +1,13 @@
 # Uber Queries III
 
 ## Problem Introduction
-```
+
 Write an SQL query to compute the average_ride_distance and average_ride_duration of every 3-month window starting from January - March 2020 to October - December 2020.
 Round average_ride_distance and average_ride_duration to the nearest two decimal places.
 
 The average_ride_distance is calculated by summing up the total ride_distance values from the three months and dividing it by 3. 
 The average_ride_duration is calculated in a similar way.
-```
+
 
 ## Tables
 ```
